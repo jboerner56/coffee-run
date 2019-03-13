@@ -2,14 +2,17 @@
 function urlForPage (){
     // return the actual url so it can be used
     const API_URL = 'api/coffee.json';
+    // return api data so it can be used
     return API_URL;
 }
 
 function retrievePageOfCharacters() {
     fetch(API_URL)
+    // convert the api data to json
     .then(function (response) {
         return response.json(); 
     })
+    // log to make sure it if pulling the data
     .then(function (orders) {
         console.log(orders);
 
@@ -59,4 +62,37 @@ function singleOrder (orderEmail){
 
     const listArea = document.querySelector('[data-list')
     listArea.appendChild(listItem);
+}
+
+// takes each individual order and adds them to the page
+
+function drawMultipleToPage(coffeeOrders){
+    const listArea = document.querySelector('[data-list]');
+    listArea.textContent = '';
+    drawMultipleToPage.forEach(singleOrder);
+}
+
+// function to be able to sort by the email's beginning letter
+function filterByLetter(letter) {
+    console.log(letter);
+    if (letter.length === 1) {
+        const filtered = coffeeOrders.filter(function (email) {
+            return email.startsWith(letter.toUpperCase());
+        });
+        drawMultipleToPage(filtered);
+    } else {
+        drawMultipleToPage();
+    }
+}
+
+
+// function to ad the ability to click on the letters to show those orders that the email
+// begins ith that letter
+function addClickToLetters() {
+    const letters = document.querySelectorAll('[data-index] a');
+    letters.forEach(function (letter) {
+        letter.addEventListener('click', function () {
+            filterByLetter(letter.textContent);
+        });
+    });
 }
