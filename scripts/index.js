@@ -1,16 +1,17 @@
 // function for the API url
 function urlForPage (){
     // return the actual url so it can be used
-    return 'https://dc-coffeerun.herokuapp.com/api/coffeeOrders';
+    const API_URL = 'api/coffee.json';
+    return API_URL;
 }
 
-function retrievePageOfCharacters(pageNumber) {
-    fetch(urlForPage)
-    .then(function (response) {      // #2 And then process the response so we can get data out of it
+function retrievePageOfCharacters() {
+    fetch(API_URL)
+    .then(function (response) {
         return response.json(); 
     })
-    .then(function (response) {
-        console.log(response);
+    .then(function (orders) {
+        console.log(orders);
 
     })   
 }

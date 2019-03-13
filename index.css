@@ -38,6 +38,7 @@ h1{
     overflow-x: hidden;
     overflow-y: scroll;
     padding: none;
+    border: none;
 }
 .details{
     width: 70%;
