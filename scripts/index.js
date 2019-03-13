@@ -21,6 +21,12 @@ function retrievePageOfCharacters() {
 // empty array to pass the order data into.
 let coffeeOrders = [];
 
+// store orders function
+function storeOrders(coffeeOrders){
+    const jsonOrders = JSON.stringify(coffeeOrders);
+    localStorage.setItem(localStorage, jsonOrders)
+}
+
 // function for adding the order data to the page
 function drawOrderDataToPage(orderObject){
     // variable that data will be passed into
